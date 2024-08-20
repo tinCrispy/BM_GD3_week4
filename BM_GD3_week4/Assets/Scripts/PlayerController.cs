@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isGameOver;
     public float jumpForce;
     private Rigidbody rb;
-    bool isGrounded;
+    public bool isGrounded;
     public float gravityModifier;
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         Physics.gravity *= gravityModifier;
+        isGameOver = false;
     }
 
     // Update is called once per frame
@@ -27,11 +29,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        isGrounded = true;
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            Debug.Log("Life on the Ground");
+        }
+
+        else if (collision.gameObject.CompareTag("Obstacle"))
+        {  
+            isGameOver = true;
+            Debug.Log("Game Over");
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
         isGrounded = false;
+        Debug.Log("Lift Off!");
     }
 }
