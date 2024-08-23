@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerOofSFX;
     public AudioClip playerStartSFX;
     public AudioClip doubleJumpSFX;
+    public AudioClip littleFart;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +62,8 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce / 2, ForceMode.Impulse);
             //    transform.Rotate(90, 0, 0);
             doubleJump = false;
-            playerAudio.PlayOneShot(doubleJumpSFX, 0.5f);
+         //   playerAudio.PlayOneShot(doubleJumpSFX, 1.0f);
+            playerAudio.PlayOneShot(littleFart, 0.5f);
             //    glide = true;
         }
 

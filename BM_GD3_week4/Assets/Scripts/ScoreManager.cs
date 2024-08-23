@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timePassed = Time.time;
+        timePassed = Time.timeSinceLevelLoad;
         timePassedText.text = "Time : " + ((int)timePassed).ToString();
     }
 
@@ -32,6 +32,7 @@ public class ScoreManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         GameObject.FindObjectOfType<PlayerController>().Restart();
+
     }
 
 }
