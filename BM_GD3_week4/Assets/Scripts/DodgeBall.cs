@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class DodgeBall : MonoBehaviour
 {
-    
 
+    public int shotSpeed;
+    private int xRange = 25;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,9 @@ public class DodgeBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(8, 0, 0 * Time.deltaTime);
+        transform.Translate(Vector3.forward * shotSpeed * Time.deltaTime);
+
+        if (transform.position.x > xRange)
+            Destroy(gameObject);
     }
 }

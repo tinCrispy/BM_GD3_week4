@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
+
     public GameObject GameOverScreen;
     float timePassed;
     public TMP_Text timePassedText;
